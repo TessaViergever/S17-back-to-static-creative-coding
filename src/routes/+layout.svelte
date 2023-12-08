@@ -122,15 +122,34 @@
 
 	/* Nav */
 	header {
+		font-family: 'Permanent Marker', cursive;
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 5.5rem;
-		background-color: var(--whiteColor);
+		background: rgb(58,180,166);
+		background: linear-gradient(90deg, rgba(58,180,166,1) 0%, rgba(226,167,206,1) 26%, rgba(29,180,253,0.790375525210084) 50%, rgba(222,227,132,1) 73%, rgba(252,188,69,1) 100%);
+		animation: gradient 15s ease infinite;
 		box-shadow: var(--boxShadow) 0px 0px 8px;
 		z-index: 100;
 	}
+
+@keyframes gradient {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  50% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+	
 
 	.header-off {
 		display: none;
@@ -144,6 +163,11 @@
 		-ms-flex-pack: justify;
 		justify-content: space-between;
 		overflow: hidden;
+	}
+
+	nav:hover {
+		background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(217,177,209,1) 23%, rgba(172,225,215,1) 73%, rgba(148,187,233,1) 100%);
 	}
 
 	nav img {
