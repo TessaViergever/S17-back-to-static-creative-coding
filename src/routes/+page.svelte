@@ -13,57 +13,29 @@
 	<title>Dashboard The Ocean Cleanup</title>
 </svelte:head>
 
+
+
+<ul class="container">
+
+    <li class="card card-tall card-wide"></li>
+	<li class="card card-tall card card-tall"></li>
+	<li class="card">1</li>
+	<li class="card">2</li>
+	<li class="card">3</li>
+	<li class="card">4</li>
+	<li class="card">5</li>
+	<li class="card">6</li>
+	<li class="card">7</li>
+	<li class="card">8</li>
+	<li class="card">9</li>
+	<li class="card">10</li>
+	
+</ul>
+
+
 <section class="main">
 	<div class="container2">
-		<!-- Blue line -->
-		<div class="menu">
-			<div class="line" />
-		</div>
 
-		<!-- Title + Searchbar -->
-		<section class="header-dashboard">
-			<h1>{data.dataHygraph.dashboard.title}</h1>
-			<form class="search" action="/" method="GET">
-				<input type="text" name="search" placeholder="Search.." />
-				<input
-					type="submit"
-					name="search-button"
-					aria-label="search button"
-					class="search-button"
-				/>
-				<!-- voeg een zoekicoon toe -->
-			</form>
-		</section>
-
-		<TrashRemoved data={data.dataApi.totals} text={data.dataHygraph} />
-
-        <TrashRemoved data={data.dataApi.totals} text={data.dataHygraph}></TrashRemoved>
-
-        <!-- Box 3: percentage since 2013 -->
-        <section class="panel box-3">
-            <ChartRiverOcean data={data} />
-		</section>
-
-		<!-- Box 4: percentage in 2040 -->
-		<section class="panel box-4">
-			<h2>Plastic removed per continent</h2>
-			<ChartContinents {data} />
-		</section>
-
-		<!-- Grafiek: share swith icons -->
-		<section class="panel grafiek">
-			<Trashgraph {data} />
-		</section>
-
-		<div class="map">
-			<Map {data} />
-		</div>
-
-		<Infotext data={data.dataHygraph.dashboard.infotext} />
-
-		<SystemStatus data={data} />
-
-		<!-- More: table more information links -->
 		<section class="panel more">
 			<h2>More about</h2>
 			<table class="table-more">
@@ -133,14 +105,18 @@
 	</div>
 </section>
 <!-- End main section -->
+<section>
+	<TrashRemoved data={data.dataApi.totals} text={data.dataHygraph} />
+	<TrashRemoved data={data.dataApi.totals} text={data.dataHygraph}></TrashRemoved>
+	<ChartRiverOcean data={data} />
+	<ChartContinents {data} />
+	<Trashgraph {data} />
+	<Map {data} />
+	<Infotext data={data.dataHygraph.dashboard.infotext} />
+	<SystemStatus data={data} />
+</section>
 
-<!-- Scroll to top button -->
-<a href="#top" class="scroll-top" aria-label="scroll to top">
-	<!-- add icon -->TOP
-</a>
 
-<!-- Footer -->
-<footer />
 
 <style>
 	/* Proxima font */
@@ -195,7 +171,14 @@
 	}
 
 	:global(body) {
-		background-color: var(--lightGray);
+		background-image:radial-gradient(
+			Black 5%,
+			lightskyblue 10%,
+			Yellow 2%,
+			Orange 15%,
+			Darkblue 50%,
+			transparent
+		);
 		color: var(--textColor);
 		position: relative;
 	}
@@ -216,283 +199,52 @@
 		text-decoration: none;
 	}
 
-	/* Grid */
-	.container2 {
-		margin: 8rem 1.5rem 1.5rem 1.5rem;
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		/* grid-template-rows: 0.01fr 0.1fr 1fr 1fr 0.5fr 0.8fr 0.5fr 0.5fr 1fr ; */
-		gap: 1.2rem;
-		grid-template-areas:
-			'menu menu'
-			'header-dashboard header-dashboard'
-			'box-1 box-2'
-			'dashboard-info dashboard-info'
-			'map map'
-			'share share'
-			'box-3 box-3'
-			'box-4 box-4'
-			'grafiek grafiek'
-			'more more';
-	}
 
-	.panel {
-		border-radius: 0.5rem;
-		padding: 1.5rem;
-		background-color: var(--whiteColor);
-		box-shadow: var(--boxShadow) 0px 0px 8px;
-		transition: 0.2s;
-	}
+/* GRID CREATIVE CODING */
 
-	/* Grid areas */
-	.header-dashboard {
-		display: flex;
-		justify-content: space-between;
-		grid-area: header-dashboard;
-	}
+.container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); 
+  grid-auto-rows: 240px;
+  margin: 10em;
+}
 
-	.menu {
-		grid-area: menu;
-	}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-	.grafiek {
-		grid-area: grafiek;
-	}
+	background-image:linear-gradient(
+			rgb(62, 41, 41) 8%,
+			hotpink 10%,
+			Orange 20%,
+			Rebeccapurple 75%);
 
-	.map {
-		grid-area: map;
-		border-radius: 0.5rem;
-		padding: 0.5rem;
-		background-color: var(--whiteColor);
-		box-shadow: var(--boxShadow) 0px 0px 8px;
-		transition: 0.2s;
-	}
+    font-size: 3rem;
+    color: #F08080;
+    box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    transition: all 500ms;
+    overflow: hidden;
 
-	.box-3 {
-		grid-area: box-3;
-	}
+ }
+.card:hover {
+    box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+    transform: translateY(-3px) scale(1.1);
+ }
 
-	.box-4 {
-		grid-area: box-4;
-	}
+ @media only screen and (min-width: 600px){
+.card-tall {
+  grid-row: span 2/auto;
+}
 
-	.share {
-		grid-area: share;
-	}
+.card-wide {
+  grid-column: span 2/auto;
+}
+}
 
-	.more {
-		grid-area: more;
-	}
-
-	/* line */
-	.line {
-		height: 2px;
-		width: 18%;
-		background-color: var(--lightBlue);
-	}
-
-	/* dashboard H1 */
-	h1 {
-		line-height: 1.2;
-		font-weight: 500;
-		text-transform: uppercase;
-		color: var(--darkBlue);
-	}
-	.header-dashboard h1 {
-		font-size: 2rem;
-	}
-
-	/* boxes styling */
-	.box-3,
-	.box-4 {
-		font-size: 1.6rem;
-		color: var(--lightBlue);
-	}
-
-	.box-3,
-	.box-4,
-	h2 {
-		font-size: 1.6rem;
-		color: var(--darkBlue);
-	}
-
-	/* more styling */
-	.more-link {
-		display: flex;
-		justify-content: left;
-		align-items: center;
-		gap: 2rem;
-		color: var(--textColor);
-		font-size: 1.5rem;
-		text-transform: capitalize;
-	}
-
-	.more-link:hover {
-		color: var(--lightBlue);
-	}
-
-	.more-icon {
-		font-size: 1.8rem;
-		color: var(--lightBlue);
-	}
-
-	.table-more {
-		border-collapse: collapse;
-	}
-
-	.more-row {
-		border-bottom: 0.5px solid var(--accentGray);
-		height: 4rem;
-	}
-
-	.arrow {
-		text-align: right;
-	}
-
-	/* search bar */
-	.search {
-		display: flex;
-		gap: 0.5rem;
-	}
-	.search-button {
-		max-width: 8rem;
-	}
-	.search input {
-		width: 130px;
-		height: 25px;
-		border-radius: 5px;
-		outline: none;
-		padding-left: 0.5rem;
-		background: var(--whiteColor);
-		box-shadow: var(--boxShadow) 0px 0px 8px;
-		border: none;
-		color: var(--textColor);
-	}
-
-	.search input::placeholder {
-		color: var(--darkBlue);
-		font-size: 1.3rem;
-	}
-
-	/* Scroll to top */
-	.scroll-top {
-		position: absolute;
-		bottom: 1%;
-		right: 2%;
-		width: 3rem;
-		height: 3rem;
-		padding: 0.5rem;
-		background-color: var(--lightBlue);
-		color: var(--whiteColor);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-	}
-
-	@keyframes progress {
-		0% {
-			stroke-dasharray: 0 100;
-		}
-	}
-
-	@media (min-width: 700px) {
-		.container2 {
-			margin: 8rem 1.5rem 1.5rem 1.5rem;
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			/* grid-template-rows: 0.01fr 0.1fr .5fr 1fr 1fr 1fr 1fr; */
-			gap: 1.2rem;
-			grid-template-areas:
-				'menu menu menu menu'
-				'header-dashboard header-dashboard header-dashboard header-dashboard'
-				'box-1 box-1 box-2 box-2'
-				'dashboard-info dashboard-info map map'
-				'dashboard-info dashboard-info map map'
-				'share share share share'
-				'box-3 box-3 box-4 box-4'
-				'grafiek grafiek grafiek more';
-		}
-	}
-
-	@media (min-width: 992px) {
-		.container2 {
-			margin: 5rem 2rem 2rem 22.3rem;
-			grid-template-columns: repeat(6, 1fr);
-			/* grid-template-rows: 0.01fr 0.1fr 0.3fr 0.4fr 0.4fr 0.6fr; */
-			grid-template-areas:
-				'menu menu menu menu menu menu'
-				'header-dashboard header-dashboard header-dashboard header-dashboard header-dashboard header-dashboard'
-				'box-1 box-1 box-1 box-2 box-2 box-2'
-				'dashboard-info dashboard-info map map map map'
-				'share share share share share share'
-				'box-3 box-3 box-3 box-4 box-4 box-4'
-				'grafiek grafiek grafiek more more more';
-		}
-	}
-
-	/* Breakpoints large screen */
-	@media (min-width: 1200px) {
-		.more {
-			grid-area: more;
-		}
-
-		.panel {
-			padding: 2rem;
-		}
-
-		.map {
-			padding: 1.5rem;
-		}
-
-		.box-4 {
-			font-size: 3rem;
-		}
-
-		.box-3 {
-			font-size: 2.5rem;
-		}
-
-		.box-3,
-		.box-4,
-		h2 {
-			font-size: 1.5rem;
-		}
-
-		.more h2 {
-			font-size: 1.8rem;
-		}
-
-		.share h2 {
-			font-size: 1.8rem;
-		}
-
-		.line {
-			height: 2px;
-			width: 6%;
-			background-color: var(--lightBlue);
-		}
-
-		.search input {
-			width: 190px;
-		}
-
-		.scroll-top {
-			display: none;
-		}
-
-		.amount h4 {
-			color: var(--lightBlue);
-			font-weight: 500;
-			font-size: 1.8rem;
-		}
-
-		h3 {
-			font-size: 1.5rem;
-		}
-
-		tr {
-			height: 3.3rem;
-		}
-	}
 </style>

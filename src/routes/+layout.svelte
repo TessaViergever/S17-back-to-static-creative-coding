@@ -6,58 +6,6 @@
         visible = !visible
     }
 </script>
-{#if visible}
-<header class="Header" >
-	<nav>
-		<img src="/Ocean-Cleanup-Logo-Dark.png" alt="logo of The ocean cleanup" />
-		<ul>
-			<li>
-				<a href="https://theoceancleanup.com/" class="nav-link" aria-label="back to the homepage">
-					<span>Home</span>
-				</a>
-			</li>
-
-			<li>
-				<a href="/" class="nav-link active" aria-label="dashboard">
-					<span>Dashboard</span>
-				</a>
-			</li>
-
-			<li>
-				<a href="/" class="nav-link" aria-label="our river technology">
-					<span>Our Technology</span>
-				</a>
-			</li>
-
-			<li>
-				<a href="/" class="nav-link" aria-label="the economic impact">
-					<span>Economic Impact</span>
-				</a>
-			</li>
-
-			<li>
-				<a href="/" class="nav-link" aria-label="plastic sources ">
-					<span>Plastic Sources</span>
-				</a>
-			</li>
-
-			<li>
-				<a href="/" class="nav-link" aria-label="donate">
-					<span>Donate</span>
-				</a>
-			</li>
-
-			<li>
-				<a href="/" class="nav-link" aria-label="sign up to newsletter">
-					<span>Our Newsletter</span>
-				</a>
-			</li>
-		</ul>
-		<button on:click={ToggleMenu}>HIDE MENU</button>
-	</nav>
-</header>
-{/if}
-<button on:click={ToggleMenu}>SHOW MENU</button>
 
 <main>
 	<slot />
